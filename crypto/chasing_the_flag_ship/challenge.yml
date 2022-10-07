@@ -2,10 +2,10 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "chasing_the_flag_ship"
-author: "author"
-category: category
-description: This is a sample description
+name: "Chasing the flag ship"
+author: "Thijs"
+category: crypto
+description: "A strange ship is traveling through the ocean. Anyone that can catch up with it will receive great rewards! Note: this challenge requires IPv6. If your regular connection does not support IPv6, connecting through a VPN might allow you to use IPv6."
 value: 100
 type: standard
 
@@ -34,7 +34,7 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc hostname 12345
+connection_info: http://[2a02:c206:2101:8992::]/
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -42,71 +42,49 @@ connection_info: nc hostname 12345
 healthcheck: writeup/exploit.sh
 
 # Can be removed if unused
-attempts: 5
+# attempts: 5
 
 # Flags specify answers that your challenge use. You should generally provide at least one.
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
     # A static case sensitive flag
-    - flag{3xampl3}
-    # A static case sensitive flag created with a dictionary
-    - {
-        type: "static",
-        content: "flag{wat}",
-    }
-    # A static case insensitive flag
-    - {
-        type: "static",
-        content: "flag{wat}",
-        data: "case_insensitive",
-    }
-    # A regex case insensitive flag
-    - {
-        type: "regex",
-        content: "(.*)STUFF(.*)",
-        data: "case_insensitive",
-    }
+    - TUCTF{Cap7a1n_MeRs3nnE_tW1s7eR_DOe5_noT_WaN7_to_p@y_poR7_du3s}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - information disclosure
-    - buffer overflow
-    - memory forensics
+    - ipv6
+    - networking
+    - bad randomness
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
     - web
-    - sandbox
-    - js
+    - crypto
+    - python
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - dist/source.py
+    - src/main.py
+    - src/requirements.txt
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.
 # Can be removed if unused
 # Accepts dictionaries or strings
-hints:
-    - {
-        content: "This hint costs points",
-        cost: 10
-    }
-    - This hint is free
 
 # Requirements are used to make a challenge require another challenge to be
 # solved before being available.
 # Can be removed if unused
 # Accepts challenge names as strings or challenge IDs as integers
-requirements:
-    - "Warmup"
-    - "Are you alive"
+# requirements:
+#     - "Warmup"
+#     - "Are you alive"
 
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
