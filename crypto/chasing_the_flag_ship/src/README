@@ -1,0 +1,5 @@
+apt update
+apt install iptables
+ip route add local 2a02:c206:2101:8992::/64 dev eth0
+
+apt install build-essential python3-dev nginx
