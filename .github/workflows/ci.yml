@@ -1,8 +1,10 @@
-name: MANUAL - ctfd sync
+name: CTFd sync
 # Controls when the action will run. 
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  # Trigger the action whenever a new commit is pushed
+  push:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -25,15 +27,20 @@ jobs:
           CTFD_TOKEN: ${{ secrets.CTFD_TOKEN }}
       - name: sync chals to ctfd
         run: |
-          shopt -s globstar
           cd $GITHUB_WORKSPACE
-          for i in ./**/challenge.yml; do 
-            CHAL_DIR=$(dirname $i)
-            echo "SYNCING CHAL TO CTFd: $CHAL_DIR"
-            ctf challenge sync $CHAL_DIR
-            if [ $? == 1 ]; then
-              echo "::warning::Error syncing chal $CHAL_DIR"
+          echo "Finding available challenges"
+          COUNT=0
+          while IFS= read -r -d '' challenge
+          do
+            CHAL_DIR=$(dirname "$challenge")
+            echo "Trying to install challenge in $CHAL_DIR"
+            ctf challenge install "$CHAL_DIR"
+            echo "Synching challenge in $CHAL_DIR"
+            if ! ctf challenge sync "$CHAL_DIR"; then
+              echo "::warning file=\"$challenge\"::Failed to synchronize with CTFd"
+              continue
             fi
-            ctf challenge install $CHAL_DIR
-          done
+            COUNT=$((COUNT+1));
+          done < <(find . -name 'challenge.yml' | grep -f .gitignore -v | tr '\n' '\000')
+          echo "Synchronized $COUNT challenges!"
         shell: bash --noprofile --norc {0}
