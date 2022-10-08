@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Challenge is based on https://words.filippo.io/dispatches/telegram-ecdh/
 from pwn import *
 from secrets import randbits
