@@ -41,6 +41,6 @@ jobs:
               continue
             fi
             COUNT=$((COUNT+1));
-          done < <(find . -name 'challenge.yml' | grep -f .gitignore -v | tr '\n' '\000')
+          done < <(find . -name 'challenge*.yml' | grep -f .gitignore -v | tr '\n' '\000')
           echo "Synchronized $COUNT challenges!"
         shell: bash --noprofile --norc {0}
