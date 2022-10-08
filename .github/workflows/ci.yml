@@ -1,0 +1,46 @@
+name: CTFd sync
+# Controls when the action will run. 
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  # Trigger the action whenever a new commit is pushed
+  push:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2 # Checks-out repository under $GITHUB_WORKSPACE, so job can access it
+      - uses: actions/setup-python@v2 # install python
+      - name: Install ctfcli
+        run: |
+          python -m pip install --upgrade pip
+          pip install ctfcli
+      - name: init ctfcli
+        run: |
+          printf "$CTFD_URL\n$CTFD_TOKEN\ny" | ctf init
+        env:
+          CTFD_URL: ${{ secrets.CTFD_URL }}
+          CTFD_TOKEN: ${{ secrets.CTFD_TOKEN }}
+      - name: sync chals to ctfd
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Finding available challenges"
+          COUNT=0
+          while IFS= read -r -d '' challenge
+          do
+            CHAL_DIR=$(dirname "$challenge")
+            echo "Trying to install challenge in $CHAL_DIR"
+            ctf challenge install "$CHAL_DIR"
+            echo "Synching challenge in $CHAL_DIR"
+            if ! ctf challenge sync "$CHAL_DIR"; then
+              echo "::warning file=\"$challenge\"::Failed to synchronize with CTFd"
+              continue
+            fi
+            COUNT=$((COUNT+1));
+          done < <(find . -name 'challenge.yml' | grep -f .gitignore -v | tr '\n' '\000')
+          echo "Synchronized $COUNT challenges!"
+        shell: bash --noprofile --norc {0}
