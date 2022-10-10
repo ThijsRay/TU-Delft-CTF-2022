@@ -6,7 +6,7 @@ name: "FileSafe"
 author: "Fr1nge"
 category: Web
 description: We have created this file sharing service. It is in beta right now, but feel free to use it. Don't worry it is completely secure!
-value: 250
+value: 500
 type: standard
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -60,7 +60,7 @@ tags:
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
 # If provided, the field can take one of two values: hidden, visible.
-state: hidden
+state: visible
 
 # Specifies what version of the challenge specification was used.
 # Subject to change until ctfcli v1.0.0
