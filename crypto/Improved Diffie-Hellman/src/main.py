@@ -13,7 +13,6 @@ class Party:
 
     def calculate_key(self, other_public, nonce):
         self.key = (pow(other_public, self.private, p) ^ nonce)
-        print("key is", self.key)
         self.key = b64encode(self.key.to_bytes(32, 'little'))
         self.f = Fernet(self.key)
 
