@@ -2,21 +2,21 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Pwn 1"
+name: "pwn 101"
 author: "Fr1nge"
-category: Beginner
+category: pwn
 description: This is a basic pwn challenge to warm you up. Good Luck!
 value: 50
-type: standard
+type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
 # Fields in extra can be used to supply additional information for other challenge types
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
-# extra:
-#     initial: 500
-#     decay: 100
-#     minimum: 50
+extra:
+    initial: 500
+    decay: 25
+    minimum: 50
 
 # Settings used for Dockerfile deployment
 # If not used, remove or set to null
@@ -49,18 +49,20 @@ flags:
 topics:
     - pwn
     - overflow
+    - beginner
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
     - pwn
+    - overflow
     - beginner
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - src/pwn1
+    - src/pwn1.c
 
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
