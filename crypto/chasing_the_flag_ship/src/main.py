@@ -1,7 +1,6 @@
 import asyncio
 import random
 from os import environ
-from struct import unpack
 from textwrap import wrap
 from collections import deque
 from quart import Quart, request, Response
@@ -13,16 +12,18 @@ app = Quart(__name__)
 
 ocean = "2a02:c206:2101:8992"
 
-MAX_ISLANDS = 1000
+MAX_ISLANDS = 500
 SAILING_SPEED = 10
 previous_sightings = deque(maxlen=MAX_ISLANDS)
 
 def bits_to_hex(bits):
-    return ':'.join(wrap(hex(bits)[2:].rjust(16, '0'), 4))
+    return ':'.join(wrap(hex(bits)[2:].rjust(8, '0'), 4))
 
 
 def get_island():
-    return str(ip_address(f"{ocean}:{bits_to_hex(random.getrandbits(64))}"))
+    island_group = bits_to_hex(random.getrandbits(32))
+    island = bits_to_hex(random.getrandbits(32))
+    return str(ip_address(f"{ocean}:{island_group}:{island}"))
 
 
 def add_sighting():
