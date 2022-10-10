@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /register
+Disallow: /login
+Disallow: /
+Disallow: /vouch
+Disallow: /profile
+Disallow: /message

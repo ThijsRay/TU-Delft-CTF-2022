@@ -9,7 +9,7 @@ class Member
   private $is_activated;
   private $last_seen;
 
-  private function __construct($username, $password)
+  public function __construct($username, $password)
   {
     $this->username = $username;
     $this->password = $password;
@@ -17,18 +17,18 @@ class Member
     $this->last_seen = time();
   }
 
-  public function addMember($username, $password)
+  public function addMember()
   {
-    if (!$this->exists($username)) {
+    if (!$this->exists($this->username)) {
       $db = new Database();
-      $query = sprintf(
-        "INSERT INTO members (username, password, activated, last_seen) VALUES (%s, %s, %d, %d)",
-        $username,
-        $password,
-        $this->is_activated,
-        $this->last_seen
+      $stmt = $db->prepare(
+        "INSERT INTO members (username, password, activated, last_seen) VALUES (:u, :p, :a, :ls)"
       );
-      $db->exec($query);
+      $stmt->bindValue(':u', $this->username, SQLITE3_TEXT);
+      $stmt->bindValue(':p', $this->password, SQLITE3_TEXT);
+      $stmt->bindValue(':a', $this->is_activated, SQLITE3_INTEGER);
+      $stmt->bindValue(':ls', $this->last_seen, SQLITE3_TEXT);
+      $stmt->execute();
     }
   }
 
@@ -38,7 +38,10 @@ class Member
     $stmt = $db->prepare("SELECT COUNT(*) FROM members WHERE username == :username");
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
     $result = $stmt->execute();
-    print_r($result->fetchArray());
-    return false;
+    if ($result->fetchArray()[0] === 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
