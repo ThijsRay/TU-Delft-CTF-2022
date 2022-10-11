@@ -67,6 +67,7 @@ tags:
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
+    - src/pwn1
     - src/pwn1.c
 
 # The state of the challenge.
