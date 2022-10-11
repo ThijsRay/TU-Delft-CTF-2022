@@ -31,6 +31,7 @@ EXPOSE 80
 ADD httpd.conf /etc/apache2/httpd.conf
 ADD php.ini /etc/php8/php.ini
 ADD CTF /var/www/CTF
+RUN chmod 777 /var/www/CTF/htdocs/uploads
 
 HEALTHCHECK CMD wget -q --no-cache --spider localhost
 

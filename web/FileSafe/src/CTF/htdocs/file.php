@@ -1,3 +1,8 @@
+<?php
+  if (!file_exists("uploads/" . basename($_GET['file']))){
+    exit(404);
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
