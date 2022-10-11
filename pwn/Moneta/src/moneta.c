@@ -28,7 +28,7 @@ char* MENU =
 int monthdays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 char *monthnames[] = {"January",   "February", "March",    "April",
                       "May",       "June",     "July",     "August",
-                      "September", "October",  "November", "December"};
+                      "September", "October",  "November", "December", "/bin/sh"};
 
 typedef struct Date {
   unsigned int year;
@@ -100,7 +100,7 @@ int datesubtract(Date* date, Date* date2){
     return diff*sign;
 }
 
-Date* getdate(){
+Date* inputdate(){
     Date *date = malloc(sizeof(Date));
 
     printf("Please enter date in format: DD-MM-YYYY: ");
@@ -122,6 +122,7 @@ void printmonth(int* monthStart, Date* date){
 }
 
 int main(){
+    setvbuf(stdout, NULL, _IONBF, 0);
 
     int option;
     Date* d;
@@ -133,7 +134,7 @@ int main(){
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
 
-    printf(BANNER);
+    printf("%s", BANNER);
 
     yearstart = malloc(sizeof(Date));
 
@@ -150,12 +151,12 @@ int main(){
     printf("Current Date: %u-%u-%u\n", current->day, current->month, current->year);
 
     do {
-        printf(MENU);
+        printf("%s", MENU);
 
         scanf("%d", &option);
         switch(option) {
             case 1:
-                d = getdate();
+                d = inputdate();
                 if(isdatevalid(d) == 0){
                     printf("Invalid Date!\n");
                     break;
@@ -169,7 +170,7 @@ int main(){
                 *(daily_slots + diff) = amount;
                 break;
             case 2:
-                d = getdate();
+                d = inputdate();
                 if(isdatevalid(d) == 0){
                     printf("Invalid Date!\n");
                     break;
