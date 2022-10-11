@@ -4,19 +4,19 @@
 # Required sections
 name: "FileSafe"
 author: "Fr1nge"
-category: Web
+category: web
 description: We have created this file sharing service. It is in beta right now, but feel free to use it. Don't worry it is completely secure!
 value: 500
-type: standard
+type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
 # Fields in extra can be used to supply additional information for other challenge types
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
-# extra:
-#     initial: 500
-#     decay: 100
-#     minimum: 50
+extra:
+    initial: 500
+    decay: 25
+    minimum: 50
 
 # Settings used for Dockerfile deployment
 # If not used, remove or set to null

@@ -1,0 +1,13 @@
+PHP application where an admin user has access to the flag
+The goal of the attacker is to steal the session token through Cross-site request forgery
+
+A private forum that you can only access when a user vouches for you.
+- On registration, but a username "who vouches for you" and they will be able to accept or deny your request
+
+List of online users with user IDs is shown on the site
+Private message API is open to everybody by accident
+Private messages pop up on the screen of the user they are send to
+IMG tag in the message to the /vouch api with the username created during registration
+vouch API accepts both POST and GET
+
+

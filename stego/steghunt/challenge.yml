@@ -2,10 +2,10 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Improved Diffie-Hellman"
-author: "Thijs"
-category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
+name: "Steghunt"
+author: "Simon"
+category: stego
+description: "These 4 challenges are all using this image. It's stegonography so don't get mad at us for guessy stuff. The flag for this challenge is <b>TUDCTF{I_know_what_I_signed_up_for}</b>"
 value: 100
 type: dynamic
 
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
+    initial: 50
     decay: 25
     minimum: 50
 
@@ -34,40 +34,36 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 75.119.130.114 38246
+# connection_info: http://[2a02:c206:2101:8992::]/
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
 # ./writeup/exploit.sh --connection-info "nc hostname 12345"
-healthcheck: writeup/healthcheck.sh
+# healthcheck: writeup/exploit.sh
 
 # Can be removed if unused
-#attempts: 5
+# attempts: 5
 
 # Flags specify answers that your challenge use. You should generally provide at least one.
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - flag{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    - TUDCTF{I_know_what_I_signed_up_for}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
-topics:
-    - bad crypto
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
-tags:
-    - crypto
-    - diffie-hellman
+#tags:
+#    - crypto
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - src/main.py
-    - src/requirements.txt
+    - src/Steghunt.png
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.

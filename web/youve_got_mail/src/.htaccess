@@ -1,0 +1,22 @@
+Options +FollowSymlinks -MultiViews -Indexes
+RewriteEngine on
+RedirectMatch 403 ^/functions
+RedirectMatch 403 ^/data
+
+<Files "sqlite.db">
+  Require all denied
+</Files>
+
+<Files "config.php">
+  Require all denied
+</Files>
+
+<Files "db.php">
+  Require all denied
+</Files>
+
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^(.*)$ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^((.*/)*[^./]+)/*$ $1.php [L]

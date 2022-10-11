@@ -2,10 +2,10 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Improved Diffie-Hellman"
+name: "You've got mail"
 author: "Thijs"
-category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
+category: web
+description: Take a look at eMailer, an exclusive (work-progress) social network for mail and stamp enthousiasts
 value: 100
 type: dynamic
 
@@ -34,40 +34,40 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 75.119.130.114 38246
+connection_info: http://75.119.130.114:17615
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
 # ./writeup/exploit.sh --connection-info "nc hostname 12345"
-healthcheck: writeup/healthcheck.sh
+healthcheck: writeup/exploit.sh
 
 # Can be removed if unused
-#attempts: 5
+# attempts: 5
 
 # Flags specify answers that your challenge use. You should generally provide at least one.
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - flag{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    # A static case sensitive flag
+    - TUDCTF{RE@DIn9_07hEr_P3OPlEs_L3t73rS_IS_n07_aLl0Wed_accorDiNG_7o_tHe_DU7CH_COns717U7i0n}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - bad crypto
+    - web
+    - unsecured endpoints
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
-    - crypto
-    - diffie-hellman
+    - web
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
-files:
-    - src/main.py
-    - src/requirements.txt
+# files:
+    # - dist/source.py
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.
@@ -85,7 +85,7 @@ files:
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
 # If provided, the field can take one of two values: hidden, visible.
-# state: hidden
+state: visible
 
 # Specifies what version of the challenge specification was used.
 # Subject to change until ctfcli v1.0.0

@@ -1,14 +1,21 @@
 #!/usr/bin/python
 
-# Challenge is based on https://words.filippo.io/dispatches/telegram-ecdh/
+# Challenge is based on the blog post "The Most Backdoor-Looking Bug I've Ever Seen"
+# by Filippo Valsorda (https://words.filippo.io/dispatches/telegram-ecdh/)
+
+# In short: adding a nonce to Diffie-Hellman and allowing a third party to
+# control it creates the possibility for an undetected MitM attack.
+# The third part can obtain the shared key and participate in the conversation,
+# and thus leak any sensitive information
+
 from pwn import *
 from secrets import randbits
 from cryptography.fernet import Fernet
 from os import environ
 from base64 import b64encode
 
-host = "75.119.130.114"
-port = 38246
+host = environ["HOST"]
+port = environ["PORT"]
 
 p = 0xfd67a3b76136aaeb345f4175f38e65cad628e6535e7fc40f5e7952e7799d1b23
 g = 0x2
