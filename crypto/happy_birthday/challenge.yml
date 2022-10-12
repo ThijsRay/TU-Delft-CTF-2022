@@ -2,11 +2,11 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Improved Diffie-Hellman"
-author: "Thijs"
+name: "Happy birthday"
+author: "Daniël"
 category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
-value: 100
+description: "Let's celebrate TU Delft's *birthday*. Find two messages that start with 'TU Delft' and 'is the best' such that the first 12 hex characters of their SHA-3 hashes are the same."
+value: 32
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
+    initial: 32
     decay: 25
     minimum: 50
 
@@ -34,12 +34,12 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 75.119.130.114 38246
+connection_info: nc 164.92.218.155 6001
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
 # ./writeup/exploit.sh --connection-info "nc hostname 12345"
-healthcheck: writeup/healthcheck.sh
+# healthcheck: writeup/healthcheck.sh
 
 # Can be removed if unused
 #attempts: 5
@@ -48,26 +48,25 @@ healthcheck: writeup/healthcheck.sh
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    - TUDCTF{b1r7hd4y_4774ck5_4r3_b3773r_7h4n_pl41n_bru73_f0rc3!}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - bad crypto
+    - birthday attack
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
     - crypto
-    - diffie-hellman
+    - hash functions
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
-files:
-    - src/main.py
-    - src/requirements.txt
+# files:
+    # -
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.

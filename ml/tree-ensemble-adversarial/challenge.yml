@@ -2,11 +2,11 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Improved Diffie-Hellman"
-author: "Thijs"
-category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
-value: 100
+name: "ififif"
+author: "Daniël"
+category: ml
+description: "Our company has set up the brand new authenticator 5000! Now we can separate student from teachers just by scanning a picture that we hand out to each of them (0 for student, 1 for teacher). The authenticator 5000 is correct in 99.9% of the cases but is it still so accurate under noise?\n\nSubmit a series of 784 pixel values in the range 0-255 separated by spaces. The image you send has to be at most 1300 pixel values away from the original picture under original.txt."
+value: 512
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
+    initial: 512
     decay: 25
     minimum: 50
 
@@ -34,12 +34,12 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 75.119.130.114 38246
+connection_info: nc 164.92.218.155 6000
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
 # ./writeup/exploit.sh --connection-info "nc hostname 12345"
-healthcheck: writeup/healthcheck.sh
+# healthcheck: writeup/healthcheck.sh
 
 # Can be removed if unused
 #attempts: 5
@@ -48,26 +48,27 @@ healthcheck: writeup/healthcheck.sh
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    - TUDCTF{n07_0nly_n3ur4l_n37w0rk5_5uff3r_fr0m_4dv3r54r14l_3x4mpl35!}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - bad crypto
+    - combinatorial optimization / satisfiability
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
-    - crypto
-    - diffie-hellman
+    - machine learning
+    - adversarial examples
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - src/main.py
-    - src/requirements.txt
+    - src/challenge.py
+    - src/original.txt
+    - src/original.png
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.
