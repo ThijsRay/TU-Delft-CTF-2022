@@ -48,7 +48,7 @@ healthcheck: writeup/healthcheck.sh
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - flag{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    - TUDCTF{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
