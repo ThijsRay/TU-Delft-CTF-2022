@@ -1,0 +1,1 @@
+Simple SQLi challenge using SQLite. Only interesting part is that the year parameter is checked using `^[0-9]`, so the SQL injection must contain a leading integer.
