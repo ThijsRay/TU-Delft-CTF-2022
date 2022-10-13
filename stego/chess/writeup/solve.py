@@ -1,7 +1,7 @@
 import chess
 import chess.pgn
 
-pgn = open("../src/moves_wow.pgn")
+pgn = open("moves_wow.pgn")
 
 game = chess.pgn.read_game(pgn)
 

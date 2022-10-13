@@ -8,7 +8,7 @@ import base64
 leet_replacements = {
     'a': ['a', 'A', '@', '4'],
     'b': ['b', 'B', '8'],
-    'c': ['c', 'C', '(', '{', '['],
+    'c': ['c', 'C'],
     'd': ['d', 'D'],
     'e': ['e', 'E', '3'],
     'f': ['f', 'F'],
@@ -19,7 +19,7 @@ leet_replacements = {
     'k': ['k', 'K'],
     'l': ['l', 'L', '1', '|'],
     'm': ['m', 'M'],
-    'n': ['n', 'N', '^'],
+    'n': ['n', 'N'],
     'o': ['o', 'O', '0'],
     'p': ['p', 'P'],
     'q': ['q', 'Q'],
@@ -33,7 +33,7 @@ leet_replacements = {
     'y': ['y', 'Y'],
     'z': ['z', 'Z', 's', 'S', '5', '$'],
     '_': ['_', ' ', '-'],
-    ' ': ['_', ' ', '-'],
+    ' ': ['_', ' ', '-', '.'],
     '*': ['*', 'x', 'X', '%'],
     '!': ['!', '1', '|'],
     '(': ['(', '[', '{'],
@@ -61,7 +61,7 @@ def convert_random_leet(phrase):
 def dfs2(board, moves, depth, coord_list):
     if depth == len(coord_list):
         return moves
-    for move in board.pseudo_legal_moves:
+    for move in board.legal_moves:
         if move.to_square == coord_list[depth]:
             board.push(move)
             moves.append(move)
@@ -90,7 +90,8 @@ def apply_to_board(board, coord_list):
     return len(moves)
 
 # make sure target is divisible by 3
-all = "Are you kidding ??? What the **** are you talking about man ? You are a biggest looser i ever seen in my life ! You was doing PIPI in your pampers when i was beating players much more stronger then you! You are not proffesional, because proffesionals knew how to lose and congratulate opponents, you are like a girl crying after i beat you! Be brave, be honest to yourself and stop this trush talkings! Everybody know that i am very good blitz player, i can win anyone in the world in single game! And \"w\"esley \"s\"o is nobody for me, just a player who are crying every single time when loosing, ( remember what you say about Firouzja ) ! Stop playing with my name, i deserve to have a good name during whole my chess carrier, I am Officially inviting you to OTB blitz match with the Prize fund! Both of us will invest 5000$ and winner takes it all! I suggest all other people who's intrested in this situation, just take a look at my results in Blitz World championships, and that should be enough. No need to listen for every crying babe, Tigran Petrosyan is always play Fair ! And if someone will continue Officially talk about me like that, we will meet in Court! God bless with true! True will never die ! Liers will kicked off"
+#all = "Are you kidding ??? What the **** are you talking about man ? You are a biggest looser i ever seen in my life ! You was doing PIPI in your pampers when i was beating players much more stronger then you! You are not proffesional, because proffesionals knew how to lose and congratulate opponents, you are like a girl crying after i beat you! Be brave, be honest to yourself and stop this trush talkings! Everybody know that i am very good blitz player, i can win anyone in the world in single game! And \"w\"esley \"s\"o is nobody for me, just a player who are crying every single time when loosing, ( remember what you say about Firouzja ) ! Stop playing with my name, i deserve to have a good name during whole my chess carrier, I am Officially inviting you to OTB blitz match with the Prize fund! Both of us will invest 5000$ and winner takes it all! I suggest all other people who's intrested in this situation, just take a look at my results in Blitz World championships, and that should be enough. No need to listen for every crying babe, Tigran Petrosyan is always play Fair ! And if someone will continue Officially talk about me like that, we will meet in Court! God bless with true! True will never die ! Liers will kicked off"
+all = "whatif hans cheated by bringing in extra chess pieces in his pockets and placed them on the board when noone was looking?"
 # pad with '!'
 all = all + "!" * (3 - len(all) % 3)
 assert len(all) % 3 == 0
@@ -112,6 +113,7 @@ def bruteforce2(board, phrase, depth, all_moves):
     random.shuffle(choices)
     for possible_groups in choices:
         new_phrase = phrase + possible_groups
+        print(new_phrase)
         moves = dfs2(board, [], 0, get_coords(possible_groups))
         if moves is None:
             continue
@@ -125,7 +127,8 @@ def bruteforce2(board, phrase, depth, all_moves):
             all_moves.pop()
     return None
 
-board_pgn = "q1Q1q1Q1/7q/Q7/7Q/q7/7q/Q7/1q1Q1q1Q w KQkq - 0 1"
+#board_pgn = "q1Q1q1Q1/7q/Q7/7Q/q7/7q/Q7/1q1Q1q1Q w KQkq - 0 1"
+board_pgn = "rnbqkbnr/8/8/8/8/8/8/RNBQKBNR w KQkq - 0 1"
 
 moves = bruteforce2(chess.Board(board_pgn), "", 0, [])
 print(moves)
