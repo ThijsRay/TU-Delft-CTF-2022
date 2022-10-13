@@ -1,0 +1,88 @@
+# This file represents the base specification of your challenge. It is used by
+# other tools to install and deploy your challenge.
+
+# Required sections
+name: "Malfunctioning Beads"
+author: "Simon"
+category: stego
+description: "There might have been some interference in the chess hall. Maybe someone sent a hidden message?\nThe flag format is a large string without TUCTF{...}"
+value: 100
+type: dynamic
+
+# The extra field provides additional fields for data during the install/sync commands/
+# Fields in extra can be used to supply additional information for other challenge types
+# For example the follow extra field is for dynamic challenges. To use these following
+# extra fields, set the type to "dynamic" and uncomment the "extra" section below
+extra:
+    initial: 300
+    decay: 25
+    minimum: 50
+
+# Settings used for Dockerfile deployment
+# If not used, remove or set to null
+# If you have a Dockerfile set to .
+# If you have an imaged hosted on Docker set to the image url (e.g. python/3.8:latest, registry.gitlab.com/python/3.8:latest)
+# Follow Docker best practices and assign a tag
+image: null
+# Specify a host to deploy the challenge onto.
+# The currently supported URI schemes are ssh:// and registry://
+# ssh is an ssh URI where the above image will be copied to and deployed (e.g. ssh://root@123.123.123.123)
+# registry is a Docker registry tag (e.g registry://registry.example.com/test/image)
+# host can also be specified during the deploy process: `ctf challenge deploy challenge --host=ssh://root@123.123.123.123`
+host: null
+
+# Optional settings
+
+# connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
+connection_info: https://lichess.org/kPlq1JcA
+
+# healthcheck is a tool/script used to check a challenge
+# If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
+# ./writeup/exploit.sh --connection-info "nc hostname 12345"
+# healthcheck: writeup/exploit.sh
+
+# Can be removed if unused
+# attempts: 5
+
+# Flags specify answers that your challenge use. You should generally provide at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries of CTFd API data
+flags:
+    - ARE_You-KIDd1^g-??? W#@T 7#E-%Xx* @R3_YOu_7ALKI^G-A80u7-M4^_?_Y0u_4R3-a_8|gGEs7 LOOz3R-1-eV3r 5E3N-i^_My-1!f3 ! Y0u_WAS-doiNg PiP1_iN-Y0uR P@MpeR$-WheN i_w4S b3AT!n6_P1aYErS Much_M0R3-stRonG3r_th3N_y0U!-You_4rE n07-PrOff3SioNa|, BEC@U$3_PROFFezIO^@l$ KNeW h0w 7o 1ozE @nD C0NGR47u1AtE_OppO^EnTz,-y0U-@Re-11KE_A-giR|-cry!n6-afTER_I-83at-yOU|-8e-br@vE,-b3_#0^3st-tO_yourSE|F-4nd Ztop This 7ruSH_T@lK|^G5!_eVerY8OdY-KNow-7ha7_1-@M VErY-G0Od-bl!tZ PlaY3R,-i [an W!n 4NYoN3-|n the_W0RlD-IN_$iN6lE 6am3! 4Nd-'W'E$1Ey_"$`O-|S N0bODY f0r ME,-JUzt_A PLAYER W#0 Are-cRY1n6-eveRY_$|Ngle 7ime W#3^-lOO$InG, (-REmEMbER-W#47 y0U-sAY_about_fIr0uSj@ }_! $7op p14YING-WitH-mY_^4m3,_| DeZERvE 7O_#@ve-@ g0oD ^4me duR|n6 w#OlE_My (H3sZ_{4rr|eR,-!-@m-0fF1(Ia|1Y_I^vi7iNg y0u_T0_07b-8lIT$-M@t(#_wI7H_thE_Pr!ZE_Fu^D|_B07# Of_U5-w|LL_!NVe57 5oOo$-@nd_W|nNEr-7akE$_IT Al1| i-SUG63St @LL-oT#ER-PE0p1e_whO\'s_1ntREs7ed_in_t#!S_$|Tu4TIon,-Ju$T t4ke-A-1O0K 4T MY-Re5U175-!^-b1!7S wOrLD_ch@MpIOn$#Ips,_AnD t#a7_ZhoULd_BE-3nOU6#. ^o-N33D_7O L!$teN_FOr_EVERY-crY!^6-B4b3, 7I6Ran_petRosYA^_1z_@LWAys-P1ay-Fa1R-1 @Nd_!f_$OMeoNe W!1L-{oNt|nu3-0ff![1A|1Y-tA|k_aBOUt_Me-LiKE t#at, wE-w||L m3ET-IN_[0URt! 6od-B|355_wI7#-7rUe1_7rUe-W||1 N3vER_d|e-! L|3RZ w!LL k!{k3d OFf!1
+
+# Topics are used to help tell what techniques/information a challenge involves
+# They are generally only visible to admins
+# Accepts strings
+
+# Tags are used to provide additional public tagging to a challenge
+# Can be removed if unused
+# Accepts strings
+#tags:
+#    - crypto
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+#files:
+#    - src/Steghunt.png
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+
+# Requirements are used to make a challenge require another challenge to be
+# solved before being available.
+# Can be removed if unused
+# Accepts challenge names as strings or challenge IDs as integers
+# requirements:
+#     - "Warmup"
+#     - "Are you alive"
+
+# The state of the challenge.
+# If the field is omitted, the challenge is visible by default.
+# If provided, the field can take one of two values: hidden, visible.
+# state: hidden
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"
