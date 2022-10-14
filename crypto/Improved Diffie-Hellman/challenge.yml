@@ -5,7 +5,7 @@
 name: "Improved Diffie-Hellman"
 author: "Thijs"
 category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
+description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers. This time, they have learned from their mistakes and they use an 'improved' Diffie-Hellman key exchange."
 value: 100
 type: dynamic
 
