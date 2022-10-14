@@ -6,7 +6,7 @@ name: "Happy birthday"
 author: "Daniël"
 category: crypto
 description: "Let's celebrate TU Delft's *birthday*. Find two messages that start with 'TU Delft' and 'is the best' such that the first 12 hex characters of their SHA-3 hashes are the same."
-value: 32
+value: 300
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 32
+    initial: 300
     decay: 25
     minimum: 50
 
