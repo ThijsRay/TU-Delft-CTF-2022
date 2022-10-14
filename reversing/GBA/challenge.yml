@@ -2,10 +2,10 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Based"
+name: "I broke my ARM"
 author: "Simon"
-category: crypto
-description: "Sup gamers, are you <b>based</b> enough to solve this challenge?"
+category: reversing
+description: "I was playing with my GBA and it's arm broke. I didn't even know it had any but apparently it even has a thumb?! Can you help me get in?"
 value: 100
 type: dynamic
 
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 100
+    initial: 500
     decay: 25
     minimum: 50
 
@@ -34,7 +34,7 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-# connection_info: http://[2a02:c206:2101:8992::]/
+#connection_info: https://lichess.org/KLkVd333
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -48,25 +48,21 @@ host: null
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{W0w_y0u_533M_R34LLY_B453d_4nD_n07_CRiNG3}
-
+    - TUDCTF{C0Nn3Ct3D_By_A_Wr15T!}
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
-topics:
-    - encoding
-    - base64
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
-tags:
-    - crypto
+#tags:
+#    - crypto
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
-files:
-    - src/flag.enc
+#files:
+    - src/game.gba
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.
