@@ -5,7 +5,7 @@
 name: "Pyjail"
 author: "Simon"
 category: misc
-description: "I just constructed this Python jail. I hope the <i>site</i> I chose is secure enough and you wont be able to read my secrets."
+description: "I just constructed this Python jail. I hope the <i>site</i> I chose is secure enough and you wont be able to print out my secrets.<br>Due to my intended solution to the challenge not being able to be done via ssh or netcat (see it as a hint) you need to send your answer to me personally (<b>Simon381#9384</b>) where I will validate your answer and give you the flag."
 value: 100
 type: dynamic
 
