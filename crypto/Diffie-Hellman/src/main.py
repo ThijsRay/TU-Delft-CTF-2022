@@ -43,7 +43,6 @@ try:
 
     a = alice.encrypt(b"Hey Bob, can you send me the flag?")
     print(f"Alice sends to Bob: {a}")
-    bob.decrypt(a)
     b = bob.encrypt(b"Sure! The flag is " + environ['FLAG'].encode('utf-8'))
     print(f"Bob replies to Alice: {b}")
     print("Alice and Bob closed their communication channel")
