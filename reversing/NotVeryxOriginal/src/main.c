@@ -1,0 +1,29 @@
+// Get stdin
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define FLAG
+char flag[] = {0x8a,0xf8,0x84,0x9d,0x8a,0xeb,0xbb,0x8c,0xed,0xdb,0xf3,0xac,0xad,0x9c,0xae,0xb9,0x81,0xcb,0xf0,0xac,0x81,0xe9,0xb5,0xb3,0xb3,0x9c,0xf3,0xad,0xa3};
+
+char magic[] = {0xDE, 0xAD, 0xC0, 0xDE};
+
+char buf[30];
+
+int main() {
+    printf("Enter the flag: ");
+    scanf("%30s", buf);
+    for (int i = 0; i < 29; i++) {
+        buf[i] ^= magic[i % 4];
+    }
+    for (int i = 0; i < 29; i++) {
+        char val1 = buf[i] & 0xff;
+        char val2 = flag[i] & 0xff;
+        if (val1 != val2) {
+            printf("Wrong flag!\n");
+            return 0;
+        }
+    }
+    printf("Correct flag!\n");
+    return 0;
+}
+
