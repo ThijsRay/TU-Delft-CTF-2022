@@ -61,7 +61,7 @@ flags:
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
-#files:
+files:
     - src/game.gba
 
 # Hints are used to give players a way to buy or have suggestions. They are not
