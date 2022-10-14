@@ -6,7 +6,7 @@ name: "ififif"
 author: "Daniël"
 category: ml
 description: "Our company has set up the brand new authenticator 5000! Now we can separate student from teachers just by scanning a picture that we hand out to each of them (0 for student, 1 for teacher). The authenticator 5000 is correct in 99.9% of the cases but is it still so accurate under noise?\n\nSubmit a series of 784 pixel values in the range 0-255 separated by spaces. The image you send has to be at most 1300 pixel values away from the original picture under original.txt."
-value: 512
+value: 500
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 512
+    initial: 500
     decay: 25
     minimum: 50
 

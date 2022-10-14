@@ -2,11 +2,11 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Happy birthday"
+name: "Sticky wiki"
 author: "Daniël"
-category: crypto
-description: "Let's celebrate TU Delft's *birthday*. Find two messages that start with 'TU Delft' and 'is the best' such that the first 12 hex characters of their SHA-3 hashes are the same."
-value: 300
+category: osint
+description: "Many things you do online stay there forever. With Open-source intelligence (OSINT) people use this kind of information. Can you find out who likes to write about ECHO on the TU Delft wikipedia page?"
+value: 200
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 300
+    initial: 200
     decay: 25
     minimum: 50
 
@@ -34,7 +34,7 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 164.92.218.155 6001
+# connection_info: nc 164.92.218.155 6001
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -48,20 +48,20 @@ connection_info: nc 164.92.218.155 6001
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{b1r7hd4y_4774ck5_4r3_b3773r_7h4n_pl41n_bru73_f0rc3!}
+    - TUDCTF{4ny0n3_c4n_3d17_w1k1p3d14}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - birthday attack
+    - wikipedia edits
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
-    - crypto
-    - hash functions
+    - wikipedia
+    - beginner
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
@@ -72,6 +72,8 @@ tags:
 # required but can be nice.
 # Can be removed if unused
 # Accepts dictionaries or strings
+hints:
+    - You can visit 'view history' on ALL wikipedia pages
 
 # Requirements are used to make a challenge require another challenge to be
 # solved before being available.

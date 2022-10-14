@@ -1,2 +1,3 @@
 .ctf/
 venv/
+*.DS_Store
