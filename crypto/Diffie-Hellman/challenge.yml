@@ -2,10 +2,10 @@
 # other tools to install and deploy your challenge.
 
 # Required sections
-name: "Improved Diffie-Hellman"
+name: "Diffie-Hellman"
 author: "Thijs"
 category: crypto
-description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers. This time, they have learned from their mistakes and they use an 'improved' Diffie-Hellman key exchange."
+description: "Alice and Bob want to communicate a secure message with each other, but they don't like eavesdroppers."
 value: 100
 type: dynamic
 
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
+    initial: 300
     decay: 25
     minimum: 50
 
@@ -34,7 +34,7 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc 75.119.130.114 38246
+connection_info: nc 75.119.130.114 38245
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -48,7 +48,7 @@ healthcheck: writeup/healthcheck.sh
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{NEVeR_R0lL_y0Ur_Own_cRYPT0_lIK3_T313gRAm_DId_w1TH_mTPR07o}
+    - TUDCTF{VER1FyinG_puBL1c_keyS_w1tHoUT_WEB_0F_TRu5T_or_pKI_I5_nO7_TriVIAl}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
