@@ -1,0 +1,1 @@
+Flag = b"TUDCTF{1SnT_B0nEh_DurF33_3tT3ck_c@@L!?!}"
