@@ -6,7 +6,7 @@ name: "EzzRsa"
 author: "Neel"
 category: crypto
 description: "What if e is very big?"
-value: 400
+value: 100
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 100
+    initial: 300
     decay: 25
     minimum: 50
 
