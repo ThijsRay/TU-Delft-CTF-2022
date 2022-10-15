@@ -72,6 +72,8 @@ topics:
 # required but can be nice.
 # Can be removed if unused
 # Accepts dictionaries or strings
+hints:
+    - https://drive.google.com/file/d/...
 
 # Requirements are used to make a challenge require another challenge to be
 # solved before being available.
