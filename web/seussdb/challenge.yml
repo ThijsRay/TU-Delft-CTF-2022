@@ -14,9 +14,9 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
-    decay: 25
-    minimum: 50
+  initial: 200
+  decay: 25
+  minimum: 50
 
 # Settings used for Dockerfile deployment
 # If not used, remove or set to null
@@ -34,7 +34,7 @@ host: null
 # Optional settings
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: http://to.do:1234
+connection_info: http://144.91.71.181:38291/
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -48,27 +48,27 @@ connection_info: http://to.do:1234
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    # A static case sensitive flag
-    - TUDCTF{seuss_might_be_good_at_writing_books,_but_he_sure_isnt_good_at_sql}
+  # A static case sensitive flag
+  - TUDCTF{seuss_might_be_good_at_writing_books,_but_he_sure_isnt_good_at_sql}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - web
-    - sql
+  - web
+  - sql
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
-    - web
-    - beginner
+  - web
+  - beginner
 
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 # files:
-    # - dist/source.py
+# - dist/source.py
 
 # Hints are used to give players a way to buy or have suggestions. They are not
 # required but can be nice.
