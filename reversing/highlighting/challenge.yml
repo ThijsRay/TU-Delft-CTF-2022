@@ -5,7 +5,7 @@
 name: "Highlighting"
 author: "molenzwiebel"
 category: reversing
-description: "My professor told me to use a specific package to highlight my source code, but I don't think I did it right.\n\nTip: the easiest way to play with this challenge is to import it on [Overleaf](https://overleaf.com). If you want to play with it locally, you will need a relatively recent (newer than 2019) version of TeX Live or a comparable LaTeX distribution."
+description: "My professor told me to use a specific package to highlight my source code, but I don't think I did it right.<br><br>Tip: the easiest way to play with this challenge is to import it on <a href="https://overleaf.com">Overleaf</a>. If you want to play with it locally, you will need a relatively recent (newer than 2019) version of TeX Live or a comparable LaTeX distribution."
 value: 200
 type: dynamic
 
