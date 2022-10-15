@@ -6,7 +6,7 @@ name: "pwn 101"
 author: "Fr1nge"
 category: pwn
 description: This is a basic pwn challenge to warm you up. Good Luck!
-value: 50
+value: 300
 type: dynamic
 
 # The extra field provides additional fields for data during the install/sync commands/
@@ -14,7 +14,7 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-  initial: 500
+  initial: 300
   decay: 25
   minimum: 50
 
@@ -53,8 +53,7 @@ flags:
 # Accepts strings
 topics:
   - pwn
-  - overflow
-  - beginner
+  - easy
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
