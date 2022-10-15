@@ -48,7 +48,7 @@ connection_info: nc 164.92.218.155 6001
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    - TUDCTF{b1r7hd4y_4774ck5_4r3_b3773r_7h4n_pl41n_bru73_f0rc3!}
+    - TUDCTF{b1r7hd4y_4774ck5_4r3_b3773r_7h4n_pl41n_bru73_f0rc3}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
