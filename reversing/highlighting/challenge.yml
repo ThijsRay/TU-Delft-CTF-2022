@@ -48,7 +48,7 @@ host: null
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-  - TUDCTF{C0Nn3Ct3D_By_A_Wr15T!}
+  - TUDCTF{1s_thiz_4h3_s0rt_0f_m4ch1ne_al4n_3nvisi0n3d?}
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
