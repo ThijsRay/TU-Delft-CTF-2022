@@ -55,7 +55,6 @@ tags:
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - src/specs.txt
     - src/flag.tuduck
 
 # The state of the challenge.
