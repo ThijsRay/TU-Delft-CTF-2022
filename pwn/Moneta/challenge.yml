@@ -14,9 +14,9 @@ type: dynamic
 # For example the follow extra field is for dynamic challenges. To use these following
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
-    initial: 500
-    decay: 25
-    minimum: 50
+  initial: 500
+  decay: 25
+  minimum: 50
 
 # Settings used for Dockerfile deployment
 # If not used, remove or set to null
@@ -32,7 +32,7 @@ image: null
 host: null
 
 # connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
-connection_info: nc to-be-filled-out.com 3131
+connection_info: nc 144.91.71.181 38291
 
 # healthcheck is a tool/script used to check a challenge
 # If connection_info was provided to CTFd when the challenge was installed, it will be passed to the healthcheck script:
@@ -43,20 +43,20 @@ healthcheck: writeup/exploit.py
 # Can be removed if unused
 # Accepts strings or dictionaries of CTFd API data
 flags:
-    # A static case sensitive flag
-    - TUDCTF{wH0_U535_4_CL1_f0R_3xP3N53_m4n4G3m3n7}
+  # A static case sensitive flag
+  - TUDCTF{wH0_U535_4_CL1_f0R_3xP3N53_m4n4G3m3n7}
 
 # Topics are used to help tell what techniques/information a challenge involves
 # They are generally only visible to admins
 # Accepts strings
 topics:
-    - pwn
+  - pwn
 
 # Tags are used to provide additional public tagging to a challenge
 # Can be removed if unused
 # Accepts strings
 tags:
-    - pwn
+  - pwn
 
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
@@ -66,8 +66,8 @@ state: visible
 # Provide paths to files from the same directory that this file is in
 # Accepts strings
 files:
-    - src/moneta
-    - src/libc-2.31.so
+  - src/moneta
+  - src/libc-2.31.so
 
 # Specifies what version of the challenge specification was used.
 # Subject to change until ctfcli v1.0.0
