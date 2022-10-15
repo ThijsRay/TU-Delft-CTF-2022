@@ -15,7 +15,7 @@ type: dynamic
 # extra fields, set the type to "dynamic" and uncomment the "extra" section below
 extra:
     initial: 400
-    decay: 25
+    decay: 15
     minimum: 50
 
 # Settings used for Dockerfile deployment
@@ -83,7 +83,6 @@ topics:
 # The state of the challenge.
 # If the field is omitted, the challenge is visible by default.
 # If provided, the field can take one of two values: hidden, visible.
-state: hidden
 
 # Specifies what version of the challenge specification was used.
 # Subject to change until ctfcli v1.0.0

@@ -1,0 +1,227 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue@2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+    <title>TUDCTF - Polyglot</title>
+
+    <style>
+        textarea {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            max-width: 1200px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .aside {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .aside>* {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="loading">
+            Loading challenges...
+        </div>
+
+        <section v-else>
+            <h1>TUDCTF - Polyglot</h1>
+
+            <p>
+                In this challenge, you will be asked to submit a snippet of assembly. This assembly must perform some
+                operation, as outlined in the challenge description. The tricky part: your assembly must be valid for
+                <b>two</b> architectures: x86_64 and ARM64. In particular, the raw bytes of assembly will be interpreted
+                as both x86 and ARM, and both must perform the operation described in the challenge description.
+            </p>
+
+            <p>
+                This page contains an input that allows you to interactively assemble either x86_64 or ARM64 assembly.
+                It will automatically show the raw assembled bytes, as well as the disassembly for both architectures.
+                You can use this tool to help build your assembly snippet.
+            </p>
+
+            <p>
+                Some practical information:
+            </p>
+
+            <ul>
+                <li>Your code will execute at address <code>0x1000</code>.</li>
+                <li>Your code will have access to a stack. The registers <code>rbp</code> and <code>rsp</code> (x86_64)
+                    and <code>sp</code> (ARM64) will be setup properly.</li>
+                <li>No other memory regions than the code page and the stack are mapped. Attempting to read from/write
+                    to these regions will cause your submission to fail.</li>
+                <li>All other registers will be initialized to a sane value, usually either zero or some challenge
+                    input.</li>
+                <li>We will run your code using the <a href="https://www.unicorn-engine.org/">Unicorn CPU emulator</a>.
+                </li>
+                <li><i>All</i> bytes of assembly must decode to valid instructions in both architectures.</li>
+                <li>Each challenge has a maximum amount of instructions, as well as a maximum amount of emulation steps
+                    taken.</li>
+                <li>Some challenges may disallow certain instructions to make the challenge harder. Those will be listed
+                    in the challenge information.</li>
+            </ul>
+
+            <form>
+                <label for="challenge">Select a challenge to get started:</label>
+                <select name="challenge" v-model="challengeIndex" @change="reset">
+                    <option :value="i" v-for="challenge, i in challenges">{{ challenge.name }}</option>
+                </select>
+            </form>
+
+            <template v-if="challengeIndex !== null">
+                <h3>Challenge Information</h3>
+                <hr />
+
+                <div>
+                    <b>Challenge Name:</b> {{currentChallenge.name}}
+                </div>
+
+                <div>
+                    <b>Maximum amount of instructions:</b> {{currentChallenge.max_instruction_count}}
+                </div>
+
+                <div>
+                    <b>Maximum amount of emulation steps:</b> {{currentChallenge.max_simulation_steps}}
+                </div>
+
+                <div>
+                    <b>Disallowed instructions:</b> {{currentChallenge.disallowed_mnemonics.length ?
+                    currentChallenge.disallowed_mnemonics.join(", ") : "none"}}
+                </div>
+
+                <b>Description:</b>
+                <p v-html="currentChallenge.description"></p>
+
+                <h3>Editor</h3>
+                <hr />
+
+                <form>
+                    <label for="language">Assembly language:</label>
+                    <select name="language" v-model="language" @change="assemble">
+                        <option value="x86">x86_64 (Intel)</option>
+                        <option value="arm64">ARM64</option>
+                        <option value="hex">Raw bytes (hex)</option>
+                    </select>
+
+                    <label for="code">Assembly code:</label>
+                    <textarea v-model="content" name="code" rows="10" cols="80" @input="assemble"
+                        placeholder="Type your assembly here (Intel syntax, supports labels and most directives)."></textarea>
+
+                    <hr />
+
+                    <label for="code">Assembled:</label>
+                    <div class="aside">
+                        <div>
+                            <label>x86_64</label>
+                            <textarea v-model="assembleResult.x86" name="code" rows="10" cols="80" disabled></textarea>
+                        </div>
+
+                        <div>
+                            <label>ARM64</label>
+                            <textarea v-model="assembleResult.arm64" name="code" rows="10" cols="80"
+                                disabled></textarea>
+                        </div>
+                    </div>
+
+                    <label>Bytes</label>
+                    <textarea v-model="assembleResult.hex" name="code" rows="3" cols="80" disabled></textarea>
+                </form>
+
+                <h3>Submit</h3>
+                <hr />
+
+                <p>
+                    Happy with the above assembly? Submit it below to get your flag!
+                </p>
+
+                <button type="button" @click="submit" :disabled="submitting">Submit</button>
+                <p v-if="message">
+                    {{message}}
+                </p>
+            </template>
+        </section>
+    </div>
+
+    <script>
+        (async () => {
+            const vue = new Vue({
+                el: '#app',
+                data: {
+                    loading: true,
+                    challenges: [],
+                    challengeIndex: null,
+                    submitting: false,
+                    language: "x86",
+                    content: "",
+                    assembleResult: { x86: "", arm64: "", hex: "" }
+                },
+                async mounted() {
+                    this.challenges = await fetch("/api/v1/challenge").then(x => x.json());
+                    this.loading = false;
+                    this.assemble();
+                },
+                computed: {
+                    currentChallenge() {
+                        return this.challenges[this.challengeIndex];
+                    }
+                },
+                methods: {
+                    reset() {
+                        this.response = "";
+                        this.submitting = false;
+                    },
+                    async assemble() {
+                        const response = await fetch("/api/v1/assemble", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                language: this.language,
+                                code: this.content
+                            })
+                        });
+
+                        this.assembleResult = await response.json();
+                    },
+                    async submit() {
+                        this.message = "";
+                        this.submitting = true;
+                        try {
+                            const response = await fetch("/api/v1/challenge/" + this.challengeIndex + "/submit", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    code: this.assembleResult.hex
+                                })
+                            });
+                            const json = await response.json();
+
+                            this.submitting = false;
+                            this.message = json.message ? json.message : "Server responded with error code " + response.status;
+                        } catch (e) {
+                            this.submitting = false;
+                            this.message = "Failed to submit: " + e;
+                        }
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
