@@ -4,7 +4,7 @@
 # Required sections
 name: "qubit.copy()"
 author: "Daniël"
-category: ml
+category: quantum
 description: "In quantum there is this thing called the no-cloning theorem which means that you can NEVER clone qubits. Therefore this challenge is impossible."
 value: 400
 type: dynamic
